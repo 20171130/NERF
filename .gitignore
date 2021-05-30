@@ -1,0 +1,8 @@
+__pycache__*
+.idea/*
+**/.ipynb_checkpoints/*
+.DS_Store
+CKPT
+data
+log
+*.pickle
