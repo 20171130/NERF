@@ -273,9 +273,6 @@ class Trainer(object):
                 result = pool.map(result2mol, arg_list, chunksize= 64)
                 result = list(result)
                 tgts = [item[1].split(".") for item in result] #  _, tgt_s, tgt_valid 
-            
-                """ it is tested that all targets are valid"""
-                
 
                 output_dict = self.model('sample', batch_gpu, temperature)
                 pred_aroma, pred_charge = output_dict['aroma'].cpu(), output_dict['charge'].cpu()

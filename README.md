@@ -38,6 +38,7 @@ python -m torch.distributed.launch --nproc_per_node=$n_gpu --master_port $port .
 ```
 
 ## Testing
+For top-k sampling, we use temperature = 0.7*1.3**n, n = 0, 1,...and use the first k different valid predictions at the lowest temperature as the top-k predictions.
 
 ```bash
 tb_port=6018
@@ -50,5 +51,5 @@ CUDA_VISIBLE_DEVICES=0
 python -m torch.distributed.launch --nproc_per_node=$n_gpu --master_port $port ./main.py --world_size $n_gpu --test \
 --vae \
 --batch_size 256 --dropout=0.1 --depth 6 --dim 256 \
---prefix data --name $name --epochs 100 --checkpoint tmp.pt --temperature 0.0
+--prefix data --name $name --epochs 100 --checkpoint tmp.pt --temperature 0.7
 ```
